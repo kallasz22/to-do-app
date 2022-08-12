@@ -7,6 +7,15 @@ fetch('/load')
         let li = document.createElement('li');
         li.innerText = items[i].item + " tag:" + items[i].tag;
 
+        if (items[i].tag != '') {
+            let option = document.createElement('option');
+            option.value = items[i].tag;
+            option.innerText = items[i].tag;
+            document.querySelector('select').appendChild(option);
+        }
+        
+
+
         document.querySelector('ul').appendChild(li);
     }
 });
@@ -17,6 +26,5 @@ document.querySelector('select').addEventListener('change', async function(){
         newOption.value = a;
         newOption.innerText = a;
         this.appendChild(newOption);
-        
     }
 });

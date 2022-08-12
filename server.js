@@ -25,6 +25,7 @@ const bcrypt = require('bcrypt');
 
 //login-auht -- session-token
 const crypto = require('crypto');
+const user = require('./models/user');
 
 //oldalak lekérése expressben
 app.use(express.static(__dirname + "/public"));
@@ -39,6 +40,7 @@ app.post("/new-item", loginOnlyMiddleware, async function(req, res){
     }
 
     user.todos.push(todo);
+
     await user.save();
     res.redirect('/to-do.html');
 });
@@ -111,4 +113,4 @@ app.get('*', function(req, res){
     res.status(404).end('404 : Not Found');
 });
 
-app.listen(5000);
+app.listen(80);
